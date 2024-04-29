@@ -1,7 +1,6 @@
-package com.example.msproductcatalog.dao.repository;
+package com.example.msproductcatalog.mapper;
 
-import com.example.msproductcatalog.dao.entity.OrderDetailsEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface OrderDetailsRepository extends JpaRepository<OrderDetailsEntity,Long> {
+import org.mapstruct.Mapper;
+@Mapper
+public interface OrderDetailsMapper {
 }

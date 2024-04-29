@@ -1,4 +1,7 @@
 package com.example.msproductcatalog.dao.repository;
 
-public interface ProductRepository {
+import com.example.msproductcatalog.dao.entity.CategoryEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<CategoryEntity,Long> {
 }

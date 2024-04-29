@@ -1,4 +1,5 @@
 plugins {
+    groovy
     java
     id("org.springframework.boot") version "3.2.5"
     id("io.spring.dependency-management") version "1.1.4"
@@ -22,12 +23,24 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.liquibase:liquibase-core")
+    //lombok
     compileOnly("org.projectlombok:lombok")
-    runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.projectlombok:lombok")
+    //database
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+//    implementation("org.liquibase:liquibase-core")
+    runtimeOnly("org.postgresql:postgresql")
+    //swagger
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+    //spock
+    testImplementation("org.spockframework:spock-core:2.4-M1-groovy-4.0")
+    //random
+    testImplementation("io.github.benas:random-beans:3.9.0")
+    //mapstruck
+    implementation("org.mapstruct:mapstruct:1.4.2.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

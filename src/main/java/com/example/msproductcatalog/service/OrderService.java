@@ -1,11 +1,9 @@
-package com.example.msproductcatalog.controller;
+package com.example.msproductcatalog.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
+@Service
 @RequiredArgsConstructor
-@RequestMapping("order")
-public class OrderController {
+public class OrderService {
 }

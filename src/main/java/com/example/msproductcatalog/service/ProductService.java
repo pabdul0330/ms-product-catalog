@@ -1,11 +1,41 @@
-package com.example.msproductcatalog.controller;
+package com.example.msproductcatalog.service;
 
+import com.example.msproductcatalog.dao.entity.CategoryEntity;
+import com.example.msproductcatalog.dao.entity.ProductEntity;
+import com.example.msproductcatalog.dao.repository.CategoryRepository;
+import com.example.msproductcatalog.dao.repository.ProductRepository;
+import com.example.msproductcatalog.mapper.ProductMapper;
+import com.example.msproductcatalog.model.request.ProductRequest;
+import com.example.msproductcatalog.model.response.ProductResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
+import java.util.List;
+
+@Service
 @RequiredArgsConstructor
-@RequestMapping("product")
-public class ProductController {
+public class ProductService {
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
+
+    public void addProduct(ProductRequest request) {
+        ProductEntity productEntity = ProductMapper.INSTANCE.
+                mapRequestToEntity(request);
+        productRepository.save(productEntity);
+    }
+
+    public List<ProductResponse> getProducts() {
+        List<ProductEntity> all = productRepository.findAll();
+        return ProductMapper.INSTANCE.mapEntityListToResponseList(all);
+    }
+
+    public void editProduct(long id, ProductRequest productRequest) {
+        ProductEntity productEntity = productRepository.findById(id).orElseThrow();
+        CategoryEntity categoryEntity = null;
+        if (productRequest.getCategoryId() != 0) {
+            categoryEntity = categoryRepository.findById(productRequest.getCategoryId()).orElseThrow();
+        }
+        ProductMapper.INSTANCE.editProduct(productEntity, categoryEntity, id, productRequest);
+        productRepository.save(productEntity);
+    }
 }
