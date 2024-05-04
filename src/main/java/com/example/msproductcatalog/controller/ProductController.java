@@ -23,9 +23,16 @@ public class ProductController {
     public List<ProductResponse> getProducts() {
         return productService.getProducts();
     }
-
+    @GetMapping("{id}")
+    public ProductResponse getProductById(@PathVariable long id) {
+        return productService.getProductById(id);
+    }
     @PutMapping("edit/{id}")
     public void editProduct(@PathVariable long id, @RequestBody ProductRequest request) {
         productService.editProduct(id, request);
+    }
+    @DeleteMapping("{id}")
+    public void deleteProduct(@PathVariable long id){
+        productService.deleteProduct(id);
     }
 }
