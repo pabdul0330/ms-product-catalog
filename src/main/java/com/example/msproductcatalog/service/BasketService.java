@@ -5,7 +5,6 @@ import com.example.msproductcatalog.dao.entity.ProductEntity;
 import com.example.msproductcatalog.dao.repository.BasketRepository;
 import com.example.msproductcatalog.dao.repository.ProductRepository;
 import com.example.msproductcatalog.mapper.BasketMapper;
-import com.example.msproductcatalog.mapper.ProductMapper;
 import com.example.msproductcatalog.model.request.BasketRequest;
 import com.example.msproductcatalog.model.response.BasketResponse;
 import lombok.RequiredArgsConstructor;
