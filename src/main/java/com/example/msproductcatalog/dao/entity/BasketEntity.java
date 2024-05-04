@@ -10,26 +10,29 @@ import java.util.List;
 
 @Entity
 @Data
-public class BasketEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long Id;
-    boolean status;
-    double totalAmount;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "basketsandproducts",
-            joinColumns = {@JoinColumn(name = "basket_id")},
-            inverseJoinColumns = {@JoinColumn(name = "product_id")}
-            /*schema = "shopingSite"*/)
-    List<ProductEntity> products;
+    public class BasketEntity {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        long id;
+        boolean orderStatus;
+        boolean status;
+        double totalAmount;
+        @ManyToMany(cascade = CascadeType.ALL)
+        @JoinTable(name = "basketsandproducts",
+                joinColumns = {@JoinColumn(name = "basket_id")},
+                inverseJoinColumns = {@JoinColumn(name = "product_id")}
+                /*schema = "shopingSite"*/)
+        List<ProductEntity> products;
 
-    @OneToOne(mappedBy = "basket")
-    OrderDetailsEntity orderDetails;
+        @OneToOne(mappedBy = "basket",cascade = CascadeType.MERGE)
+        OrderDetailsEntity orderDetails;
 
-    @CreationTimestamp
-    LocalDate createdAt;
-    @UpdateTimestamp
-    LocalDate updatedAt;
+
+
+        @CreationTimestamp
+        LocalDate createdAt;
+        @UpdateTimestamp
+        LocalDate updatedAt;
     //    OrderDetailsEntity orderDetails;
     //    long productIds;
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long Id;
+    long id;
     String categoryName;
     //    long  productIds;
     @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE)

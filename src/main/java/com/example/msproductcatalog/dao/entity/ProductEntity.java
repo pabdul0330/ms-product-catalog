@@ -29,6 +29,8 @@ public class ProductEntity {
     @ManyToMany(mappedBy = "products")
     List<BasketEntity> baskets;
 
+
+
     @Column(columnDefinition = "TEXT")
     String productDescription;
     int productCount;
