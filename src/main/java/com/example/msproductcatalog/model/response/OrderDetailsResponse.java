@@ -7,7 +7,6 @@ import lombok.experimental.FieldDefaults;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrderDetailsResponse {
-
     String customerName;
     String customerAddress;
     BasketResponse basket;
