@@ -12,9 +12,9 @@ import java.util.List;
 @Mapper
 public interface OrderMapper {
     OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
-    default void mapRequestToEntity(BasketEntity entity, OrderDetailsEntity orderDetails, boolean status, List<ProductEntity> productEntities){
+
+    default void mapRequestToEntity(BasketEntity entity, OrderDetailsEntity orderDetails, boolean status) {
         entity.setOrderDetails(orderDetails);
         entity.setStatus(status);
-        entity.setProducts(productEntities);
     }
 }

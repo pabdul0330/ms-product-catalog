@@ -38,8 +38,8 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    public List<ProductEntity> editProductsForCount(List<ProductEntity> entities) {
-        return entities.stream().peek(i -> i.setProductCount(i.getProductCount() - 1)).toList();
+    public void editProductsForCount(List<ProductEntity> entities) {
+         entities.forEach(i -> i.setProductCount(i.getProductCount() - 1));
     }
 
     public void editProduct(long id, ProductRequest productRequest) {
@@ -48,7 +48,7 @@ public class ProductService {
         if (productRequest.getCategoryId() != 0) {
             categoryEntity = categoryRepository.findById(productRequest.getCategoryId()).orElseThrow();
         }
-        ProductMapper.INSTANCE.mapRequestToEntity(productEntity, categoryEntity, id, productRequest);
+        ProductMapper.INSTANCE.editProduct(productEntity, categoryEntity, id, productRequest);
         productRepository.save(productEntity);
     }
 }

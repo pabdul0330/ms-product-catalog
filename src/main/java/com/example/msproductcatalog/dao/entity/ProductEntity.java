@@ -22,14 +22,12 @@ public class ProductEntity {
     long id;//id
     String productName;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private CategoryEntity category;
 
     @ManyToMany(mappedBy = "products")
     List<BasketEntity> baskets;
-
-
 
     @Column(columnDefinition = "TEXT")
     String productDescription;

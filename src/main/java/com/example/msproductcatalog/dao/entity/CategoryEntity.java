@@ -13,9 +13,9 @@ import java.util.List;
 public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    long Id;
     String categoryName;
     //    long  productIds;
-    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     List<ProductEntity> products;
 }

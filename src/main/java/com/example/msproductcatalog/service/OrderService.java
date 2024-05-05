@@ -8,6 +8,7 @@ import com.example.msproductcatalog.mapper.OrderMapper;
 import com.example.msproductcatalog.model.request.OrderDetailsRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -22,7 +23,8 @@ public class OrderService {
 //                toList());
 
         OrderDetailsEntity orderDetailsEntity = OrderDetailsMapper.INSTANCE.mapRequestToEntity(detailsRequest, basketEntity);
-        OrderMapper.INSTANCE.mapRequestToEntity(basketEntity, orderDetailsEntity, true,productService.editProductsForCount(basketEntity.getProducts()));
+        productService.editProductsForCount(basketEntity.getProducts());
+        OrderMapper.INSTANCE.mapRequestToEntity(basketEntity, orderDetailsEntity, true);
 
         basketRepository.save(basketEntity);
     }

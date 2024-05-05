@@ -32,7 +32,7 @@ public interface ProductMapper {
 
     @Mapping(target = "entity.category", source = "category")
     @Mapping(source = "id", target = "entity.id")
-    void mapRequestToEntity(@MappingTarget ProductEntity entity,
+    void editProduct(@MappingTarget ProductEntity entity,
                      CategoryEntity category,
                      Long id,
                      ProductRequest request);
