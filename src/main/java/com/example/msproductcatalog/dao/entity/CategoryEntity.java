@@ -16,6 +16,6 @@ public class CategoryEntity {
     long Id;
     String categoryName;
     //    long  productIds;
-    @OneToMany(mappedBy = "category", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     List<ProductEntity> products;
 }
