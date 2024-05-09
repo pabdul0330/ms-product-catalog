@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("basket")
+@RequestMapping("/basket")
 public class BasketController {
     private final BasketService basketService;
 
