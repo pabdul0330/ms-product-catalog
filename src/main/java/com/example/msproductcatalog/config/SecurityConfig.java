@@ -1,3 +1,4 @@
+
 package com.example.msproductcatalog.config;
 
 import org.springframework.context.annotation.Bean;
@@ -6,6 +7,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -42,7 +44,7 @@ public class SecurityConfig  {
                                 .requestMatchers("/teachers").hasAnyRole("ADMIN")
 
                 ).formLogin(f->f.defaultSuccessUrl("/books"))
-//                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .logout(logout ->
                         logout.logoutUrl("/logout")
                                 .logoutSuccessHandler((request, response, authentication)
@@ -63,3 +65,4 @@ public class SecurityConfig  {
         return new InMemoryUserDetailsManager(admin);
     }
 }
+

@@ -23,10 +23,14 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     //lombok
-    compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
+    compileOnly("org.projectlombok:lombok")
+
     //feign client
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.1.0")
+
+    //security
+    implementation("org.springframework.boot:spring-boot-starter-security")
 
     //database
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -43,6 +47,7 @@ dependencies {
     //mapstruck
     implementation("org.mapstruct:mapstruct:1.4.2.Final")
     annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
-
+    //test
+    testImplementation("org.springframework.security:spring-security-test")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
