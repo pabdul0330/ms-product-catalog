@@ -10,3 +10,7 @@ spring:
       ddl-auto: update
   liquibase:
     enabled: false
+  security:
+    user:
+      name: Peyman
+      password: 123
