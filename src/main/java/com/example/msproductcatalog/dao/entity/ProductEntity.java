@@ -22,7 +22,7 @@ public class ProductEntity {
     long id;//id
     String productName;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn
     private CategoryEntity category;
 

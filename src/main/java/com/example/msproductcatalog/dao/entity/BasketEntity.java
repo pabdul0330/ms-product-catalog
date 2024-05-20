@@ -16,14 +16,14 @@ public class BasketEntity {
     long Id;
     boolean status;
     double totalAmount;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "basketsandproducts",
             joinColumns = {@JoinColumn(name = "basket_id")},
             inverseJoinColumns = {@JoinColumn(name = "product_id")}
             /*schema = "shopingSite"*/)
     List<ProductEntity> products;
 
-    @OneToOne(mappedBy = "basket")
+    @OneToOne(mappedBy = "basket",cascade = CascadeType.MERGE)
     OrderDetailsEntity orderDetails;
 
     @CreationTimestamp
