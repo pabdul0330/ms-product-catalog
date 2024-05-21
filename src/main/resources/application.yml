@@ -12,14 +12,19 @@ spring:
     url: ${DB_URL}
     username:  ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    hikari:
+      schema: "shoppingsite"
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
-  liquibase:
-    enabled: false
+      ddl-auto: none
+
   thymeleaf:
     cache: false
+
+  liquibase:
+    change-log: liquibase/change-log-master.yaml
+
 springdoc:
   show-login-endpoint: true
 server:
