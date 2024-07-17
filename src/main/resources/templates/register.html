@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        width: 400px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    p {
+        margin-bottom: 15px;
+    }</style>
+</head>
+<body>
+<form action="#" th:action="@{/register}" th:object="${user}" method="post">
+    <p>Name: <label>
+        <input type="text" th:field="*{name}">
+    </label></p>
+    <p>Username: <label>
+        <input type="text" th:field="*{username}">
+    </label></p>
+    <p>Email: <label>
+        <input type="email" th:field="*{email}">
+    </label></p>
+    <p>Password: <label>
+        <input type="password" th:field="*{password}">
+    </label></p>
+    <p><input type="submit" value="Register"></p>
+</form>
+</body>
+</html>

@@ -1,0 +1,122 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_categories_table
+      author: Peyman Abdullali
+      changes:
+        - createTable:
+            tableName: categories
+            schemaName: shoppingsite
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: category_name
+                  type: varchar(255)
+
+  - changeSet:
+      id: create_products_table
+      author: Peyman Abdullali
+      changes:
+        - createTable:
+            tableName: products
+            schemaName: shoppingsite
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: product_name
+                  type: varchar(255)
+              - column:
+                  name: category_id
+                  type: bigint
+              - column:
+                  name: product_description
+                  type: text
+              - column:
+                  name: product_count
+                  type: integer
+              - column:
+                  name: product_price
+                  type: double
+              - column:
+                  name: created_at
+                  type: date
+              - column:
+                  name: updated_at
+                  type: date
+              - column:
+                  name: product_photo
+                  type: CLOB
+                  constraints:
+                    nullable: true
+
+  - changeSet:
+      id: create_baskets_table
+      author: Peyman Abdullali
+      changes:
+        - createTable:
+            tableName: baskets
+            schemaName: shoppingsite
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: status
+                  type: boolean
+              - column:
+                  name: total_amount
+                  type: double
+              - column:
+                  name: created_at
+                  type: date
+              - column:
+                  name: updated_at
+                  type: date
+
+  - changeSet:
+      id: create_order_detail_table
+      author: Peyman Abdullali
+      changes:
+        - createTable:
+            tableName: orderdetails
+            schemaName: shoppingsite
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: customer_name
+                  type: varchar(255)
+              - column:
+                  name: customer_address
+                  type: varchar(512)
+              - column:
+                  name: email
+                  type: varchar(255)
+              - column:
+                  name: basket_id
+                  type: bigint
+              - column:
+                  name: created_at
+                  type: date
+              - column:
+                  name: updated_at
+                  type: date
+
+
+

@@ -9,6 +9,5 @@ import java.util.List;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class BasketRequest {
-
     List<Long> productIds;
 }

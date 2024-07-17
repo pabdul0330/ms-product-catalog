@@ -4,6 +4,7 @@ import com.example.msproductcatalog.model.request.CategoryRequest;
 import com.example.msproductcatalog.model.response.CategoryResponse;
 import com.example.msproductcatalog.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +16,8 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @PostMapping
+    @PostMapping("add")
+    @ResponseStatus(HttpStatus.CREATED)
     public void addCategory(@RequestBody CategoryRequest request) {
         categoryService.addCategory(request);
     }
