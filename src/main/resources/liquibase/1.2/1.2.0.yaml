@@ -52,6 +52,11 @@ databaseChangeLog:
               - column:
                   name: updated_at
                   type: date
+              - column:
+                  name: product_photo
+                  type: CLOB
+                  constraints:
+                    nullable: true
 
   - changeSet:
       id: create_baskets_table

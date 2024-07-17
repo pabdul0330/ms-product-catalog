@@ -12,6 +12,7 @@ public class ProductResponse {
     long Id;
     String productName;
     CategoryRequest category;
+    private String productPhoto;
     String productDescription;
     int productCount;
     double productPrice;

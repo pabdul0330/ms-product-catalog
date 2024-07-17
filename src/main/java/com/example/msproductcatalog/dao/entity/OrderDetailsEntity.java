@@ -15,6 +15,8 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "orderdetails",schema = "shoppingsite")
+
 public class OrderDetailsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +24,9 @@ public class OrderDetailsEntity {
     String customerName;
     @Column(length = 512)
     String customerAddress;
+    String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "basket_id", referencedColumnName = "id")
     private BasketEntity basket;
 

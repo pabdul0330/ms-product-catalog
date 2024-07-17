@@ -16,17 +16,19 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "products", schema = "shoppingsite")
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;//id
+    long id;
     String productName;
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @Lob
+    private String productPhoto;
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn
     private CategoryEntity category;
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "products", cascade = CascadeType.MERGE)
     List<BasketEntity> baskets;
 
     @Column(columnDefinition = "TEXT")

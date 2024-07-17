@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_baskets_and_products_table
+      author: Peyman Abdullali
+      changes:
+        - createTable:
+            tableName: basketsandproducts
+            schemaName: shoppingsite
+            columns:
+              - column:
+                  name: basket_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    foreignKey:
+                      constraintName: FK_baskets_products
+                      referencedColumnNames: id
+                      referencedTableName: baskets
+                      referencedTableSchemaName: shoppingsite
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    foreignKey:
+                      constraintName: FK_products_baskets
+                      referencedColumnNames: id
+                      referencedTableName: products
+                      referencedTableSchemaName: shoppingsite

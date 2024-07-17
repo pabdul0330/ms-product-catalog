@@ -17,7 +17,7 @@ import java.util.List;
 public interface ProductMapper {
     ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
 
-    @Mapping(target = "category.id", source = "categoryId")
+    @Mapping(target = "category.id", source = "request.categoryId")
     ProductEntity mapRequestToEntity(ProductRequest request);
 
     @Mappings({
@@ -25,10 +25,8 @@ public interface ProductMapper {
     })
     ProductResponse entityToResponse(ProductEntity entity);
 
-    //    CategoryRequest categoryEntityToRequest(ProductEntity entity);
     List<ProductResponse> mapEntityListToResponseList(List<ProductEntity> entity);
 
-    ProductResponse requestToResponse(ProductRequest request);
 
     @Mapping(target = "entity.category", source = "category")
     @Mapping(source = "id", target = "entity.id")
@@ -37,24 +35,4 @@ public interface ProductMapper {
                      Long id,
                      ProductRequest request);
 
-//   default ProductEntity mapRequestToEntity(ProductEntity entity,
-//                                     CategoryEntity categoryEntity,
-//                                     ProductRequest request) {
-//        return ProductEntity.builder()
-//                .id(entity.getId())
-//                .productName(request.getProductName())
-//                .productCount()
-//                .productDescription()
-//                .productPrice()
-//                .category(categoryEntity)
-//                .build();
-//    }
-
-    default ProductEntity map(ProductEntity entity,
-                                     CategoryEntity categoryEntity,
-                                     ProductRequest request) {
-       entity.setProductName(request.getProductName());
-
-        return entity;
-    }
 }
