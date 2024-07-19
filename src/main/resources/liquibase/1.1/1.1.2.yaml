@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Peyman Abdullali
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: products
+            baseColumnNames: category_id
+            referencedTableName: categories
+            referencedSchemaName: shoppingsite
+            referencedColumnNames: id
+            constraintName: fk_product_category
+
+        - addForeignKeyConstraint:
+            baseTableName: orderdetails
+            baseColumnNames: basket_id
+            referencedTableName: baskets
+            referencedSchemaName: shoppingsite
+            referencedColumnNames: id
+            constraintName: fk_order_detail_basket
+
